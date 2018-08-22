@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/js24_oracle_xml.js"></script>
+    <script>
+        window.onload = function () {
+            document.getElementById("btnOracle").onclick = function () {
+                startXhr();
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btnOracle">Ajax 로 RDBMS 자료 읽기 - XML</button>
+    <br>
+    <div id="disp"></div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript">
+
+        window.onload = function() {
+            document.getElementById("XML").onclick = function() {
+                startXhrX();
+            }
+            document.getElementById("JSON").onclick = function() {
+                startXhrJ();
+            }
+        }
+
+        var xhr;
+
+        function startXhrX() {
+            xhr = new XMLHttpRequest();
+            xhr.open("get","http://openapi.seoul.go.kr:8088/sample/xml/SeoulLibraryTime/1/5/",true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        processFuncX();
+                    } else {
+                        alert("요청 실패:" + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+        }
+
+        function processFuncX() {
+            var data = xhr.responseXML;
+
+            var nameNode = data.getElementsByTagName("LBRRY_NAME");
+            var adrNode = data.getElementsByTagName("ADRES");
+            var telNode = data.getElementsByTagName("TEL_NO");
+
+            var ss = "";
+            for(var i=0; i < nameNode.length; i++){
+                ss += nameNode[i].firstChild.nodeValue + " ";
+                ss += adrNode[i].firstChild.nodeValue + " ";
+                if(telNode[i].firstChild === null){
+                    ss += "";
+                }else{
+                    ss += telNode[i].firstChild.nodeValue;
+                }
+                ss += "<br>";
+            }
+
+            var row = document.createElement("tr");
+            row.appendChild(addTdX("도서관명"));
+            row.appendChild(addTdX("주소"));
+            row.appendChild(addTdX("전화"));
+            document.getElementById("TbodyXml").appendChild(row);
+
+            for (var i = 0; i < nameNode.length; i++) {
+                var row = document.createElement("tr");
+                var col = addTdX(nameNode[i].firstChild.nodeValue);
+                row.appendChild(col);
+                var col = addTdX(adrNode[i].firstChild.nodeValue);
+                row.appendChild(col);
+                if(telNode[i].firstChild === null){
+                    row.appendChild(addTdX(""));
+                }else{
+                    var col = addTdX(telNode[i].firstChild.nodeValue);
+                    row.appendChild(col);
+                }
+                document.getElementById("TbodyXml").appendChild(row);
+            }
+            document.getElementById("tableXml").setAttribute("border", "1");
+        }
+
+        function addTdX(data) {
+            var col = document.createElement("td");
+            var text = document.createTextNode(data);
+            col.appendChild(text);
+            return col;
+        }
+
+
+
+        function startXhrJ() {
+            xhr = new XMLHttpRequest();
+            xhr.open("get","http://openapi.seoul.go.kr:8088/sample/json/SeoulLibraryTime/1/5/",true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        processFuncJ();
+                    } else {
+                        alert("요청 실패:" + xhr.status);
+                    }
+                }
+            }
+            xhr.send(null);
+        }
+
+        function processFuncJ() {
+            var data = xhr.responseText;
+            var parseData = JSON.parse(data);
+
+            var row = document.createElement("tr");
+            row.appendChild(addTd("도서관명"));
+            row.appendChild(addTd("주소"));
+            row.appendChild(addTd("전화"));
+            document.getElementById("TbodyJson").appendChild(row);
+
+            for (var i = 0; i < parseData.SeoulLibraryTime.row.length; i++) {
+                var row = document.createElement("tr");
+                var col = addTd(parseData.SeoulLibraryTime.row[i].LBRRY_NAME);
+                row.appendChild(col);
+                var col = addTd(parseData.SeoulLibraryTime.row[i].ADRES);
+                row.appendChild(col);
+                var col = addTd(parseData.SeoulLibraryTime.row[i].TEL_NO);
+                row.appendChild(col);
+                document.getElementById("TbodyJson").appendChild(row);
+            }
+            document.getElementById("tableJson").setAttribute("border", "1");
+        }
+
+        function addTd(data) {
+            var col = document.createElement("td");
+            var text = document.createTextNode(data);
+            col.appendChild(text);
+            return col;
+        }
+    </script>
+</head>
+<body>
+<h3>도서관도서관도서관</h3>
+<hr>
+<button id="XML">XML읽기</button>
+<button id="JSON">JSON읽기</button>
+<br><br>
+<div>XML </div>
+<table id="tableXml">
+    <tbody id="TbodyXml">
+    </tbody>
+</table>
+<hr>
+<div>Json</div>
+<table id="tableJson">
+    <tbody id="TbodyJson">
+    </tbody>
+</table>
+<div id="disp"></div>
+</body>
+</html>
