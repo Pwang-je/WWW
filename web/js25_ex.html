@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/js25_ex.js"></script>
+    <script>
+        window.onload = function () {
+            document.getElementById("all").onclick = function () {
+                params = "?jik="+"";
+                startXhr(params);
+            }
+            document.getElementById("dep-head").onclick = function () {
+                params = "?jik=" + "부장";
+                startXhr(params);
+            }
+            document.getElementById("sec-head").onclick = function () {
+                params = "?jik=" + "과장";
+                startXhr(params);
+            }
+            document.getElementById("depu-sec").onclick = function () {
+                params = "?jik=" + "대리";
+                startXhr(params);
+            }
+            document.getElementById("staff").onclick = function () {
+                params = "?jik=" + "사원";
+                startXhr(params);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="Wrap">
+    <input type="button" value="전체" id="all">
+    <input type="button" value="부장" id="dep-head">
+    <input type="button" value="과장" id="sec-head">
+    <input type="button" value="대리" id="depu-sec">
+    <input type="button" value="사원" id="staff">
+</div>
+
+<div id="disp"></div>
+
+</body>
+</html>

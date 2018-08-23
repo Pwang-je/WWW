@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/js28_suggest.js"></script>
+</head>
+<body>
+<form action="#" name="frm">
+    ** 이름 검색 (Ajax) ** <br>
+    <p>검색어 <input type="text" name="keyword" id="keyword" onkeydown="start()"></p>
+    <hr>
+    <p>선택된 직원명 <input type="text" name="sel" id="sel"></p>
+    <input type="button" value="담당고객 출력">
+</form>
+<div id="suggest" style="display: none; position: absolute; left: 100px;  top: 100px;"></div>
+<div id="suggestList"></div>
+</body>
+</html>

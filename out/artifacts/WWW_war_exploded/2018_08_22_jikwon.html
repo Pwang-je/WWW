@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	var jik;
+	document.getElementById("ok").onclick= function() {
+		jik=document.getElementById("text").value;
+		param ="?jik="+jik;
+		if(jik === ""){
+			alert("직급을 입력하세요");
+			document.getElementById("text").value="";
+			return;
+		}else if(parseInt(jik)){
+			alert("정확한 값을 입력하세요");
+			document.getElementById("text").value="";
+			return;
+		}else{
+			startXhr(param);
+		}
+		
+	};
+}
+var xhr;
+function startXhr(param) {
+	xhr = new XMLHttpRequest();
+	xhr.open("get","http://localhost/web_basic/datas/jik.jsp"+param,true);
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4){
+			if(xhr.status === 200){
+				processFunc();
+			}else{
+				alert("요청실패" + xhr.status);
+			}
+		}
+	}
+	xhr.send(null);
+}
+function processFunc() {
+	var data = xhr.responseXML;
+	var jikval = data.getElementsByTagName("jikval");
+	var no = data.getElementsByTagName("no");
+	var name = data.getElementsByTagName("name");
+	var jikgub = data.getElementsByTagName("jikgub");
+	
+	var count=0;
+	var str = "<table>";
+	str+="<tr><th>사번</th><th>이름</th><th>직급</th></tr>";
+	for(var i=0;i<jikval.length;i++){
+		str+="<tr>";
+		//if(jik === jikgub[i].firstChild.nodeValue){
+			str+="<td>"+no[i].firstChild.nodeValue+"</td>";
+			str+="<td>"+name[i].firstChild.nodeValue+"</td>";
+			str+="<td>"+jikgub[i].firstChild.nodeValue+"</td>";
+			count++;
+		//}
+		str+="</tr>";
+	}
+	str+="인원수 : "+count+" 명";
+	str+="</table>";
+	
+	document.getElementById("disp").innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+<form action="#" id="jikwon">
+직급 :<input type="text" value="" id="text"> <button id="ok">확인</button>
+</form>
+<table id="disp"></table>
+</body>
+</html>

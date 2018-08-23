@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+                xhr = new XMLHttpRequest();
+
+                xhr.open("get", "my.txt", true);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4){
+                        if(xhr.status === 200){
+                            prcFunc();
+                        }else{
+                            alert("fail~fail~fail~~" + xhr.status);
+                        }
+                    }
+                }
+                xhr.send();
+        }
+        function prcFunc() {
+            var datas = xhr.responseText;
+            // alert(datas);
+            var rowData = datas.split(String.fromCharCode(13)); // cr.
+            // alert(rowData.length);
+            var str = "";
+            for (var i = 0; i < rowData.length; i++) {
+                var colData = rowData[i].split(",");
+                for (var j = 0; j < colData.length; j++) {
+                    str += colData[j] + " ";
+                }
+                str += "<br>";
+            }
+            document.getElementById("disp").innerHTML = str;
+        }
+    </script>
+
+</head>
+<body>
+<h2>CSV READ.</h2>
+<div id="disp"></div>
+</body>
+</html>
