@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("btnOk").onclick = function () {
+                frm.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td><img src="img/ipx.jpg" alt=""></td>
+        <td>
+                <pre>
+                    스마트폰|LTE|iOS11|화면:5.8"(2436x1125,슈퍼 레티나 HD,458ppi)|
+                    CPU:애플A11,헥사|램:3G|64G내장|microSD슬롯없음|
+                    카메라화소:후면(1200만),전면(700만)|촬영:UHD동영상,HDR,조리개밝기(F1.8),광학식손떨림보정,파노라마|
+                    애니모티콘|트루뎁스카메라|페이스타임HD|애플앱스토어|아이메시지|
+                    아이클라우드|시리|제어센터|에어드롭|3D터치|페이스ID(얼굴인식)|
+                    블루투스5.0LE|WiFi다이렉트,기가WiFi(듀얼밴드),NFC(애플페이)|
+                    나노USIM|방수|방진|스테레오스피커|증강현실(AR)지원|
+                    단자:라이트닝,3.5mm이어폰단자없음|무선충전(QI)|
+                    고속충전(전용충전기)|3.5mm잭어댑터포함|두께:7.7mm|
+                    부피:78cc|무게:174g
+                </pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <form action="Cart" name="frm" method="post">
+                <input type="hidden" name="name" value="iPhoneX">
+                <input type="hidden" name="price" value="20000">
+                <input type="button" value="사라" id="btnOk">
+                <input type="button" value="싫어" id="btnHome" onclick="history.back()">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

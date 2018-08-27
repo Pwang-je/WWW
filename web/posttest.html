@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>post 연습</title>
+</head>
+<body>
+<form action="PostData">
+    이름: <input type="text" name="name" id="" value="한국인"><br>
+    주소: <input type="text" name="addr" value="서울시"><br>
+    주소2: <input type="text" name="addr" value="강남구"><br>
+
+    <!-- check box -->
+    현재 가능한 언어는?<br>
+    <input type="checkbox" name="lan" value="c언어">c
+    <input type="checkbox" name="lan" value="자바">java
+    <input type="checkbox" name="lan" value="파이썬">python
+    <br>
+
+    <!-- radio -->
+    현재 이용 중인 교통수단은?<br>
+    <input type="radio" name="tr" name="버스" checked>버스
+    <input type="radio" name="tr" name="지하철" checked>지하철
+    <input type="radio" name="tr" name="도보" checked>도보
+    <br>
+
+    <!-- select -->
+    <select name="os">  <!-- multiple -->
+        <option value="">윈도우</option>
+        <option value="">리눅스</option>
+        <option value="">맥</option>
+    </select>
+    <br>
+
+    <input type="hidden" name="hobby" value="게임">
+    <br>
+    <hr>
+
+
+    <!-- cookie -->
+    <a href="CookieLogin">쿠키연습</a>
+    <br>
+    <a href="SessionTest">세션연습</a>
+
+    <input type="submit" value="전송">
+</form>
+</body>
+</html>

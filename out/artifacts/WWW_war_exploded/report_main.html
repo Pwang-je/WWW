@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("btnOk").onclick = function () {
+                frm.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>세션문제</h2>
+
+<form action="Insert" name="frm" method="post">
+    번호 : <input type="text" name="number"><br>
+    이름 : <input type="text" name="name"><br>
+    국어 : <input type="text" name="kor"><br>
+    영어 : <input type="text" name="eng"><br><br>
+    <input type="hidden" name="total"><br>
+    <input type="submit" id="btnOk">
+</form>
+
+
+
+</body>
+</html>

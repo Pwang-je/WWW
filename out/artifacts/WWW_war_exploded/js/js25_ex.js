@@ -19,7 +19,7 @@ function prcFunc() {
 
     var jdata = xhr.responseText;
     var parseJdata = JSON.parse(jdata);
-    alert(parseJdata.jikwon.length);
+    // alert(parseJdata.jikwon.length);
 
     var count = 0;
     var str = "";

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+
+            document.getElementById("btnOk").onclick = function () {
+                if (frm.name.value === "" || frm.subject.value === "") {
+                    alert("자료입력좀");
+                    return false;
+                }
+                frm.method="post";
+                frm.action="../BangServlet";
+                frm.submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>명록이</h2>
+<form action="#"name="frm">
+
+    <table>
+        <tr>
+            <td>작성자: </td>
+            <td><input type="text" name="name"></td>
+        </tr>
+
+        <tr>
+            <td>글제목: </td>
+            <td><input type="text" name="subject"></td>
+        </tr>
+
+        <tr>
+            <td>내용: </td>
+            <td><textarea name="contents" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="button" id="btnOk" value="등록">
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+</body>
+</html>

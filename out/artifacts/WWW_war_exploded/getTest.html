@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div input {
+            border: 1px solid darkcyan;
+            background-color: lime;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btnOk = document.getElementById("btnOk");
+            btnOk.addEventListener("click", func, false);
+        }
+        function func() {
+            // alert("a");
+            if (frm.name.value === "") {
+                frm.name.focus();
+                alert("이름입력");
+                return;
+            }
+
+            // 입력자료 오류검사 . . .
+
+            frm.submit();
+        }
+    </script>
+</head>
+<body>
+<h2>get test</h2>
+<form action="GetData" name="frm">
+    <div>
+    이름 : <input type="text" name="name" size="10"><br>
+    주소 : <input type="text" name="addr" size="10"><br>
+    나이 : <input type="text" name="age" size="10"><br>
+    <br>
+    </div>
+    <input type="button" value="전송" id="btnOk">
+    <input type="reset" value="취소">
+</form>
+</body>
+</html>
